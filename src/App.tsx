@@ -2,10 +2,16 @@ import { useState, useEffect } from 'react';
 import './App.scss';
 import axios from 'axios';
 
+interface INoun {
+	article: string;
+	singular: string;
+	plural: string;
+}
+
 const nounsUrl = 'https://edwardtanguay.vercel.app/share/germanNouns.json';
 
 function App() {
-	const [nouns, setNouns] = useState([]);
+	const [nouns, setNouns] = useState<INoun[]>([]);
 
 	useEffect(() => {
 		(async () => {
@@ -22,7 +28,7 @@ function App() {
 			<div className="nouns">
 				{nouns.map((noun) => {
 					return (
-						<div className="noun">
+						<div className="noun" key={noun.singular}>
 							<div className="front">{noun.singular}</div>
 						</div>
 					);
