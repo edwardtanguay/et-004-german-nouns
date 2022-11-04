@@ -36,17 +36,21 @@ function App() {
 		})();
 	}, []);
 
+	const handleReset = () => {
+		localStorage.removeItem(localStorageVariable);
+		window.location.reload();
+	}
+
 	return (
 		<div className="App">
 			<h1>German Noun Site</h1>
-			{/* <p>You have learned {(nouns.filter(m => m.isLearned)).length} of {nouns.length} nouns.</p> */}
 			<p>
 				You have learned{' '}
 				{nouns.reduce(
 					(total, noun) => total + (noun.isLearned ? 1 : 0),
 					0
 				)}{' '}
-				of {nouns.length} nouns.
+				of {nouns.length} nouns. <button onClick={handleReset}>Reset</button>
 			</p>
 			<Nouns nouns={nouns} setNouns={setNouns} />
 		</div>

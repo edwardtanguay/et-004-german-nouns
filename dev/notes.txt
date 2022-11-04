@@ -8,7 +8,7 @@
 	- x randomize the nouns
 - x update sentence in App.tsx: "You have learned nnn of 124 flashcards."
 
-- .. implement localStorage
-	- .. when state changes (open/close, mark as learned), save to localStorage
-	- on page load, if localStorage is there, then load it, otherwise load from API
-
+- x implement localStorage
+	- x when state changes (open/close, mark as learned), save to localStorage
+	- x on page load, if localStorage is there, then load it, otherwise load from API
+- .. make reset button
