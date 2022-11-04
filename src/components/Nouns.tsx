@@ -12,7 +12,7 @@ export const Nouns = (props: IProps) => {
 	return (
 		<div className="nouns">
 			{nouns.map((noun: INoun) => {
-				return <Noun nouns={nouns} setNouns={setNouns} noun={noun} />;
+				return <Noun nouns={nouns} setNouns={setNouns} noun={noun} key={noun.singular} />;
 			})}
 		</div>
 	);

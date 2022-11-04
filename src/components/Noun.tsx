@@ -22,7 +22,7 @@ export const Noun = (props: IProps) => {
 	return (
 		<>
 			{!noun.isLearned && (
-				<div className="noun" key={noun.singular}>
+				<div className="noun">
 					<div
 						className="front"
 						onClick={() => handleToggleFlashcard(noun)}
