@@ -10,8 +10,8 @@ function App() {
 	useEffect(() => {
 		(async () => {
 			const response = await axios.get(nounsUrl);
-      const _nouns = response.data;
-      setNouns(_nouns);
+			const _nouns = response.data;
+			setNouns(_nouns);
 		})();
 	}, []);
 
@@ -19,6 +19,15 @@ function App() {
 		<div className="App">
 			<h1>German Noun Site</h1>
 			<p>There are {nouns.length} nouns.</p>
+			<div className="nouns">
+				{nouns.map((noun) => {
+					return (
+						<div className="noun">
+							<div className="front">{noun.singular}</div>
+						</div>
+					);
+				})}
+			</div>
 		</div>
 	);
 }
