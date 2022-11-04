@@ -13,23 +13,35 @@ export const Noun = (props: IProps) => {
 		noun.isOpen = !noun.isOpen;
 		setNouns([...nouns]);
 	};
+	
+	const handleMarkAsLearned = (noun: INoun) => {
+		noun.isLearned = true;
+		setNouns([...nouns]);
+	}
 
 	return (
-		<div className="noun" key={noun.singular}>
-			<div className="front" onClick={() => handleToggleFlashcard(noun)}>
-				{noun.singular}
-			</div>
-			{noun.isOpen && (
-				<>
-					<div className="back">
-						<div className="singular">
-							{noun.article} {noun.singular}
-						</div>
-						<div className="plural">{noun.plural}</div>
-						<button>Mark as Learned</button>
+		<>
+			{!noun.isLearned && (
+				<div className="noun" key={noun.singular}>
+					<div
+						className="front"
+						onClick={() => handleToggleFlashcard(noun)}
+					>
+						{noun.singular}
 					</div>
-				</>
+					{noun.isOpen && (
+						<>
+							<div className="back">
+								<div className="singular">
+									{noun.article} {noun.singular}
+								</div>
+								<div className="plural">{noun.plural}</div>
+								<button onClick={() => handleMarkAsLearned(noun)}>Mark as Learned</button>
+							</div>
+						</>
+					)}
+				</div>
 			)}
-		</div>
+		</>
 	);
 };

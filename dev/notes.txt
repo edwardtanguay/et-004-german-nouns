@@ -1,8 +1,10 @@
 - x create Nouns component
 - x create Noun component
-- add Plural
-- add a button "Mark as Learned"
-	- when clicked
-		- don't show flashcard anymore
-		- update sentence in App.tsx: "You have learned nnn of 124 flashcards."
+- x add Plural
+- x add a button "Mark as Learned"
+	- - when clicked
+		- x don't show flashcard anymore
+
+	- randomize the nouns
+	- update sentence in App.tsx: "You have learned nnn of 124 flashcards."
 

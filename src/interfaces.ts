@@ -3,5 +3,6 @@ export interface INoun {
 	singular: string;
 	plural: string;
 	isOpen: boolean;
+	isLearned: boolean;
 }
 

@@ -17,7 +17,8 @@ function App() {
 			rawNouns.forEach((rawNoun: any) => {
 				const _noun: INoun = {
 					...rawNoun,
-					isOpen: false
+					isOpen: false,
+					isLearned: false
 				};
 				_nouns.push(_noun);
 			});
