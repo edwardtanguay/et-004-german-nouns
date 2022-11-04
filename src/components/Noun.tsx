@@ -11,6 +11,7 @@ export const Noun = (props: IProps) => {
 
 	const saveState = () => {
 		setNouns([...nouns]);
+		localStorage.setItem('german-noun-site-app-state', JSON.stringify(nouns));
 	}
 
 	const handleToggleFlashcard = (noun: INoun) => {
