@@ -2,9 +2,13 @@
 - x create Noun component
 - x add Plural
 - x add a button "Mark as Learned"
-	- - when clicked
+	- x when clicked
 		- x don't show flashcard anymore
 
-	- randomize the nouns
-	- update sentence in App.tsx: "You have learned nnn of 124 flashcards."
+	- x randomize the nouns
+- .. update sentence in App.tsx: "You have learned nnn of 124 flashcards."
+
+- implement localStorage
+	- when state changes (open/close, mark as learned), save to localStorage
+	- on page load, if localStorage is there, then load it, otherwise load from API
 

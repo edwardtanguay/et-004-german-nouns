@@ -31,7 +31,8 @@ function App() {
 	return (
 		<div className="App">
 			<h1>German Noun Site</h1>
-			<p>There are {nouns.length} nouns.</p>
+			{/* <p>You have learned {(nouns.filter(m => m.isLearned)).length} of {nouns.length} nouns.</p> */}
+			<p>You have learned {nouns.reduce((total,noun) => total + (noun.isLearned ? 1 : 0), 0)} of {nouns.length} nouns.</p>
 			<Nouns nouns={nouns} setNouns={setNouns}/>
 		</div>
 	);
