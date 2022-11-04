@@ -52,7 +52,7 @@ function App() {
 				)}{' '}
 				of {nouns.length} nouns. <button onClick={handleReset}>Reset</button>
 			</p>
-			<Nouns nouns={nouns} setNouns={setNouns} />
+			<Nouns localStorageVariable={localStorageVariable} nouns={nouns} setNouns={setNouns} />
 		</div>
 	);
 }

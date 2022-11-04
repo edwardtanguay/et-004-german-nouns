@@ -4,14 +4,15 @@ interface IProps {
 	noun: INoun;
 	setNouns: any;
 	nouns: INoun[];
+	localStorageVariable: string;
 }
 
 export const Noun = (props: IProps) => {
-	const { noun, setNouns, nouns } = props;
+	const { noun, setNouns, nouns, localStorageVariable } = props;
 
 	const saveState = () => {
 		setNouns([...nouns]);
-		localStorage.setItem('german-noun-site-app-state', JSON.stringify(nouns));
+		localStorage.setItem(localStorageVariable, JSON.stringify(nouns));
 	}
 
 	const handleToggleFlashcard = (noun: INoun) => {
