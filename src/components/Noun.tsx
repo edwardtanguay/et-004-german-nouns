@@ -9,15 +9,19 @@ interface IProps {
 export const Noun = (props: IProps) => {
 	const { noun, setNouns, nouns } = props;
 
+	const saveState = () => {
+		setNouns([...nouns]);
+	}
+
 	const handleToggleFlashcard = (noun: INoun) => {
 		noun.isOpen = !noun.isOpen;
-		setNouns([...nouns]);
+		saveState();
 	};
 	
 	const handleMarkAsLearned = (noun: INoun) => {
 		noun.isLearned = true;
-		setNouns([...nouns]);
-	}
+		saveState();
+	};
 
 	return (
 		<>
