@@ -6,7 +6,7 @@ interface INoun {
 	article: string;
 	singular: string;
 	plural: string;
-  isOpen: boolean;
+	isOpen: boolean;
 }
 
 const nounsUrl = 'https://edwardtanguay.vercel.app/share/germanNouns.json';
@@ -17,7 +17,16 @@ function App() {
 	useEffect(() => {
 		(async () => {
 			const response = await axios.get(nounsUrl);
-			const _nouns = response.data;
+			const rawNouns = response.data;
+			const _nouns: INoun[] = [];
+			rawNouns.forEach((rawNoun: any) => {
+				const _noun: INoun = {
+					...rawNoun,
+					isOpen: false
+				};
+				_nouns.push(_noun);
+			});
+			console.log(_nouns);
 			setNouns(_nouns);
 		})();
 	}, []);
@@ -31,7 +40,11 @@ function App() {
 					return (
 						<div className="noun" key={noun.singular}>
 							<div className="front">{noun.singular}</div>
-              <div className="back">{noun.article} {noun.singular}</div>
+							{noun.isOpen && (
+								<div className="back">
+									{noun.article} {noun.singular}
+								</div>
+							)}
 						</div>
 					);
 				})}
