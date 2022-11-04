@@ -6,6 +6,7 @@ interface INoun {
 	article: string;
 	singular: string;
 	plural: string;
+  isOpen: boolean;
 }
 
 const nounsUrl = 'https://edwardtanguay.vercel.app/share/germanNouns.json';
@@ -30,6 +31,7 @@ function App() {
 					return (
 						<div className="noun" key={noun.singular}>
 							<div className="front">{noun.singular}</div>
+              <div className="back">{noun.article} {noun.singular}</div>
 						</div>
 					);
 				})}
