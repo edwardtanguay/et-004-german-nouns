@@ -1,12 +1,26 @@
-import './App.scss'
+import { useState, useEffect } from 'react';
+import './App.scss';
+import axios from 'axios';
+
+const nounsUrl = 'https://edwardtanguay.vercel.app/share/germanNouns.json';
 
 function App() {
-  return (
-    <div className="App">
-      <h1>German Noun Site</h1>
-      <p>Welcome to this site.</p>
-    </div>
-  )
+	const [nouns, setNouns] = useState([]);
+
+	useEffect(() => {
+		(async () => {
+			const response = await axios.get(nounsUrl);
+      const _nouns = response.data;
+      setNouns(_nouns);
+		})();
+	}, []);
+
+	return (
+		<div className="App">
+			<h1>German Noun Site</h1>
+			<p>There are {nouns.length} nouns.</p>
+		</div>
+	);
 }
 
-export default App
+export default App;
