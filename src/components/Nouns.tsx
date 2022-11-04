@@ -1,4 +1,5 @@
 import { INoun } from '../interfaces';
+import { Noun } from './Noun';
 
 interface IProps {
 	nouns: INoun[];
@@ -6,33 +7,12 @@ interface IProps {
 }
 
 export const Nouns = (props: IProps) => {
-	const {nouns, setNouns} = props;
-
-	const handleToggleFlashcard = (noun: INoun) => {
-		noun.isOpen = !noun.isOpen;
-		// setNouns(prev => prev = ...prev, noun.isOpen)
-		setNouns([...nouns]);
-		// setNouns(nouns);
-	};
+	const { nouns, setNouns } = props;
 
 	return (
 		<div className="nouns">
 			{nouns.map((noun: INoun) => {
-				return (
-					<div className="noun" key={noun.singular}>
-						<div
-							className="front"
-							onClick={() => handleToggleFlashcard(noun)}
-						>
-							{noun.singular}
-						</div>
-						{noun.isOpen && (
-							<div className="back">
-								{noun.article} {noun.singular}
-							</div>
-						)}
-					</div>
-				);
+				return <Noun nouns={nouns} setNouns={setNouns} noun={noun} />;
 			})}
 		</div>
 	);
