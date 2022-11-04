@@ -26,10 +26,16 @@ function App() {
 				};
 				_nouns.push(_noun);
 			});
-			console.log(_nouns);
 			setNouns(_nouns);
 		})();
 	}, []);
+
+	const handleToggleFlashcard = (noun: INoun) => {
+		noun.isOpen = !noun.isOpen;
+    // setNouns(prev => prev = ...prev, noun.isOpen)
+    setNouns([...nouns]);
+    // setNouns(nouns);
+	};
 
 	return (
 		<div className="App">
@@ -39,7 +45,12 @@ function App() {
 				{nouns.map((noun) => {
 					return (
 						<div className="noun" key={noun.singular}>
-							<div className="front">{noun.singular}</div>
+							<div
+								className="front"
+								onClick={() => handleToggleFlashcard(noun)}
+							>
+								{noun.singular}
+							</div>
 							{noun.isOpen && (
 								<div className="back">
 									{noun.article} {noun.singular}
