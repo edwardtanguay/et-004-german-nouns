@@ -3,6 +3,7 @@ import './App.scss';
 import axios from 'axios';
 import { Nouns } from './components/Nouns';
 import { INoun } from './interfaces';
+import * as tools from './tools';
 
 const nounsUrl = 'https://edwardtanguay.vercel.app/share/germanNouns.json';
 
@@ -13,7 +14,7 @@ function App() {
 		(async () => {
 			const response = await axios.get(nounsUrl);
 			const rawNouns = response.data;
-			const _nouns: INoun[] = [];
+			let _nouns: INoun[] = [];
 			rawNouns.forEach((rawNoun: any) => {
 				const _noun: INoun = {
 					...rawNoun,
@@ -22,6 +23,7 @@ function App() {
 				};
 				_nouns.push(_noun);
 			});
+			_nouns = tools.randomizeArray(_nouns);
 			setNouns(_nouns);
 		})();
 	}, []);
