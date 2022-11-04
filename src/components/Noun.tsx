@@ -1,6 +1,6 @@
 import { INoun } from '../interfaces';
 
-interface IProps{
+interface IProps {
 	noun: INoun;
 	setNouns: any;
 	nouns: INoun[];
@@ -20,9 +20,15 @@ export const Noun = (props: IProps) => {
 				{noun.singular}
 			</div>
 			{noun.isOpen && (
-				<div className="back">
-					{noun.article} {noun.singular}
-				</div>
+				<>
+					<div className="back">
+						<div className="singular">
+							{noun.article} {noun.singular}
+						</div>
+						<div className="plural">{noun.plural}</div>
+						<button>Mark as Learned</button>
+					</div>
+				</>
 			)}
 		</div>
 	);
